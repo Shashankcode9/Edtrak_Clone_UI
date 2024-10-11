@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Body Styling with Background Vectors */
+        body {
+            background-color: #f0f2f5;
+            background-image: url('https://www.svgrepo.com/show/384962/bg-abstract.svg'), linear-gradient(to bottom right, #007bff, #6610f2);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        /* Form Container Styling */
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+            animation: slideIn 1s ease-in-out;
+            position: relative;
+        }
+
+        /* Title Styling */
+        .form-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        /* Form Inputs */
+        .form-control {
+            height: 50px;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #6610f2;
+            box-shadow: 0 0 10px rgba(102, 16, 242, 0.2);
+        }
+
+        /* Submit Button */
+        .btn-primary {
+            background-color: #6610f2;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 10px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #520dc9;
+        }
+
+        /* Small help text */
+        .small-text {
+            color: #888;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 576px) {
+            .form-container {
+                padding: 30px;
+            }
+        }
+
+        /* Slide In Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="form-container">
+        <h2 class="form-title">OTP Verification</h2>
+
+        <!-- Thymeleaf Form Binding for OTP -->
+        <form th:action="@{/verifyotp}" method="post" th:object="${Emaildto}">
+            <!-- Email Field -->
+<!--            <div class="mb-4">-->
+<!--                <label for="email" class="form-label">Email Address</label>-->
+<!--                <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Enter your email" required>-->
+<!--            </div>-->
+
+            <!-- OTP Field -->
+            <div class="mb-4">
+                <label for="otp" class="form-label">OTP Code</label>
+                <input type="text" id="otp" th:field="*{otp}" class="form-control" placeholder="Enter your OTP" required>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Verify OTP</button>
+            </div>
+        </form>
+
+        <!-- Small Help Text -->
+        <div class="small-text">
+            Didn’t receive an OTP? <a href="#" class="text-primary">Resend</a>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (Optional for interactive components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
